@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: "Roboto", sans-serif;
+        background: black;
+        color: white;
+      }
+      #fabric {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('images/blackhole.jpeg') center center/cover no-repeat;
+        z-index: 2;
+        opacity: 0.5; /* Adjust opacity for a subtle effect */
+        background-attachment: fixed;
+      }
+      /* Starry canvas background */
+      #starCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
+      }
+      /* Translucent banner at the top */
+      #banner {
+        backdrop-filter: blur(2px); /* Optional: add a blur effect to the background */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.24);
+        padding: 30px;
+        text-align: center;
+        z-index: 10;
+      }
+      /* Navigation links in the banner */
+      #banner nav a {
+        color: white;
+        text-decoration: none;
+        position: absolute;
+        right: 100px;
+        bottom: 20px;
+        margin: 0 20px;
+        font-size: 20px;
+        font-weight: 100;
+      }
+      .glow-text {
+        color: white;
+        text-shadow: 0 0 5px #fff;
+        transition: text-shadow 0.3s ease;
+      }
+      .glow-text:hover {
+        text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00ff, 0 0 70px #ff00ff; /* Glow effect on hover */
+      }
+      /* Page content sections */
+      .section {
+        position: relative;
+        z-index: 5;
+        padding: 100px 20px;
+        min-height: 50vh;
+      }
+      .scroll{
+        overflow: hidden;
+        opacity: 2;
+        animation: slide 60s linear infinite;
+      }
+      @keyframes slide{
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          transform: translate3d(-1692px, 0, 0);
+        }
+      }
+      .slide-ground {
+        background: url() repeat-x;
+        height: 500px;
+        width: 5076px;
+      }
+      /* Ensure the first section starts below the fixed banner */
+      #me {
+        padding-top: 100px;
+      }
+      /* "Me" Section styles */
+      #me .profile {
+        display: block;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border: 3px solid white;
+      }
+      /* Section headings */
+      .section h2 {
+        font-family: 'Courier New', Courier, monospace;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      /* Example content styling */
+      .section p {
+        font-family: 'Courier New', Courier, monospace;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Static fabric background -->
+    <div id="fabric"></div>
+    <!-- Star background canvas -->
+    <canvas id="starCanvas"></canvas>
+
+    <!-- Fixed Translucent Banner with Navigation -->
+    <div id="banner">
+      <nav>
+        <img src="images/logo.png" alt="Logo" style="width: 50px; height: 50px; position: absolute; left: 30px; top: 5px;" />
+        <!-- <a href="#me">Me</a> -->
+        <!-- <a href="#interests">Interests</a> -->
+        <!-- <a href="#aim">Aim</a> -->
+        <!-- <a href="#projects">Projects</a> -->
+        <a href="#contacts" class="glow-text">Contacts</a>
+      </nav>
+    </div>
+
+    <!-- "Me" Section with centered picture -->
+    <div id="me" class="section">
+      <h2>Hello, I'm</h2>
+      <h1 style="text-align: center; font-family: 'Courier New', Courier, monospace ;">Abhijith R</h1>
+      <img
+        src="images/me.jpg"
+        alt="Profile Picture"
+        class="profile"
+      />
+      <p>
+        I'm passionate about design, coding, and creating
+        engaging experiences. Welcome to my portfolio website.
+      </p>
+    </div>
+
+    <div id="interests" class="section">
+      <h2>Interests</h2>
+      <p>
+        I have a wide range of interests from art and design to technology and
+        music. I love exploring new trends and experimenting with creative
+        ideas.
+      </p>
+    </div>
+
+    <!-- Aim Section -->
+    <div id="aim" class="section">
+      <h2>My Aim</h2>
+      <p>
+        My aim is to leverage technology and design to build interactive and
+        meaningful experiences. I strive to bring creativity and innovation to
+        every project.
+      </p>
+    </div>
+
+    <!-- Projects Section -->
+    <div id="projects" class="section">
+      <!-- <div class="slide-ground"></div> -->
+      <div>
+      <h2>Projects</h2>
+      <p>
+        Here you can see some of the projects I have worked on. Each project is a
+        testament to my dedication to quality and creativity. [Project details,
+        screenshots, links, etc.]
+      </p>
+      </div>
+    </div>
+
+      <!-- Contacts Section with custom icon images -->
+<div id="contacts" class="section">
+    <h2>Contact Me</h2>
+    <p>
+      Feel free to get in touch with me for collaborations or inquiries.
+    </p>
+    <p>
+      Email: <a href="mailto:abhijithxr@gmail.com" class="glow-text">abhijithxr@gmail.com</a>
+    </p>
+    <div id="socials" style="text-align: center; margin-top: 20px;">
+      <!-- Replace the src attributes with the paths to your icon images -->
+      <a href="https://github.com/jithurx" target="_blank" style="margin: 0 10px;">
+        <img src="images/github.png" alt="GitHub" style="width: 32px; height: 32px;" />
+      </a>
+      <a href="https://instagram.com/koffee.code" target="_blank" style="margin: 0 10px;">
+        <img src="images/instagram.png" alt="Twitter" style="width: 32px; height: 32px;" />
+      </a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" style="margin: 0 10px;">
+        <img src="images/spotify_cc.jpeg" alt="LinkedIn" style="width: 32px; height: 32px;" />
+      </a>
+      <!-- Add additional icons as needed -->
+    </div>
+  </div>
+    </section>
+
+    <script>
+      // Star background canvas animation
+      const canvas = document.getElementById("starCanvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      // Parameters
+      const numStars = 2000;
+      const sphereRadius = 3;
+      const stars = [];
+
+      // Camera settings for perspective projection
+      const cameraZ = 3;
+      const scaleFactor = Math.min(canvas.width, canvas.height) / 4;
+
+      // Fixed rotation (group rotation) around Z-axis by 45° (π/4)
+      const fixedAngle = Math.PI / 4;
+      const cosFixed = Math.cos(fixedAngle);
+      const sinFixed = Math.sin(fixedAngle);
+
+      // Generate a uniformly distributed point inside a sphere
+      function randomPointInSphere(radius) {
+        const u = Math.random();
+        const v = Math.random();
+        const w = Math.random();
+        const r = radius * Math.cbrt(u); // cube-root for uniform distribution
+        const theta = Math.acos(1 - 2 * v);
+        const phi = 2 * Math.PI * w;
+        const x = r * Math.sin(theta) * Math.cos(phi);
+        const y = r * Math.sin(theta) * Math.sin(phi);
+        const z = r * Math.cos(theta);
+        return { x, y, z };
+      }
+
+      // Generate the stars
+      for (let i = 0; i < numStars; i++) {
+        stars.push(randomPointInSphere(sphereRadius));
+      }
+
+      let rotationX = 0;
+      let rotationY = 0;
+      let lastTime = performance.now();
+
+      function animate(currentTime) {
+        const delta = (currentTime - lastTime) / 1000;
+        lastTime = currentTime;
+        rotationX -= delta / 10;
+        rotationY -= delta / 15;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+
+        for (let i = 0; i < numStars; i++) {
+          const star = stars[i];
+          let { x, y, z } = star;
+          // Rotation around X-axis
+          const cosX = Math.cos(rotationX);
+          const sinX = Math.sin(rotationX);
+          let y1 = y * cosX - z * sinX;
+          let z1 = y * sinX + z * cosX;
+          // Rotation around Y-axis
+          const cosY = Math.cos(rotationY);
+          const sinY = Math.sin(rotationY);
+          let x1 = x * cosY + z1 * sinY;
+          let z2 = -x * sinY + z1 * cosY;
+          // Fixed rotation around Z-axis
+          let x2 = x1 * cosFixed - y1 * sinFixed;
+          let y2 = x1 * sinFixed + y1 * cosFixed;
+          let z3 = z2;
+          // Perspective projection
+          const perspective = cameraZ / (cameraZ - z3);
+          const screenX = x2 * perspective * scaleFactor + canvas.width / 2;
+          const screenY = y2 * perspective * scaleFactor + canvas.height / 2;
+          const size = 0.5; // Change this to adjust star size
+
+          ctx.beginPath();
+          ctx.arc(screenX, screenY, size, 0, 2 * Math.PI);
+          ctx.fill();
+        }
+
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+
+      // Handle window resizing
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    </script>
+  </body>
+</html>
