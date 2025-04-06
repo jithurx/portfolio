@@ -69,6 +69,32 @@
       .glow-text:hover {
         text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00ff, 0 0 70px #ff00ff; /* Glow effect on hover */
       }
+      .blink{
+        position: absolute;
+        top: 60%;
+        right: 50%;
+        transform: translate(50%, 50%);
+        padding: 10px 20px; 
+        background-color: #00000088; 
+        color: white; 
+        text-decoration: none; 
+        border-radius: 4px; 
+        display: inline-block;
+      }
+      .blink:hover {
+        animation: blink 1s infinite;
+      }
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
       /* Page content sections */
       .section {
         position: relative;
@@ -187,6 +213,9 @@
         music. I love exploring new trends and experimenting with creative
         ideas.
       </p>
+      <a href="cv.html" class="blink">
+        Go to CV
+      </a>      
     </div>
 
     <!-- Aim Section 

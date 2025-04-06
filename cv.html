@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhijith R - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root 
+        {
+            /* Monet-style color palette */
+            --primary: #7f7e80;
+            --primary-container: #5B2C7F;
+            --on-primary: #32004B;
+            --on-primary-container: #F3E1FF;
+        --secondary: #9c5151;
+    --secondary-container: #754a9e;
+--on-secondary: #260044;
+--on-secondary-container: #EDD7FF;
+--tertiary: #BFA1FF;
+--tertiary-container: #4C2A7A;
+--on-tertiary: #22004A;
+--on-tertiary-container: #E8D9FF;
+--surface: #6e44ad;
+--surface-variant: #3B2D4F;
+--on-surface: #000000;
+--on-surface-variant: #CBB8E6;
+--outline: #000000;
+--background: #121017;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--on-surface);
+        }
+
+        body {
+            background-color: var(--background);
+            background-image: 
+                radial-gradient(at 20% 0%, rgba(239, 108, 0, 0.15) 0px, transparent 50%),
+                radial-gradient(at 80% 50%, rgba(118, 88, 72, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Glassmorphism card effect */
+        .glass-card {
+            background: rgba(255, 251, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: var(--on-primary);
+            padding: 2rem;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(239, 108, 0, 0.25);
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--on-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--on-primary);
+            opacity: 0.9;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-container);
+            border-radius: 12px;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            color: var(--primary);
+            width: 25px;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: var(--on-surface);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        .education-item, .project-item, .hackathon-item {
+            background-color: var(--surface);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            border-left: 4px solid var(--primary);
+        }
+
+        .education-item h3, .project-item h3, .hackathon-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-dates {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-name {
+            font-weight: 500;
+        }
+
+        .skill-level {
+            font-size: 0.9rem;
+            color: var(--on-surface-variant);
+        }
+
+        .skill-bar {
+            height: 8px;
+            background-color: var(--surface-variant);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 4px;
+        }
+
+        .beginner { width: 25%; }
+        .intermediate { width: 50%; }
+        .advanced { width: 75%; }
+
+        .project-list, .hackathon-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .project-item ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="glass-card">
+            <div class="header-content">
+                <div class="profile-info">
+                    <h1>Abhijith R</h1>
+                    <h2>Computer Science Engineering Student</h2>
+                </div>
+                <img src="images/cv_me.jpg" alt="Abhijith R" class="profile-photo">
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="left-column">
+                <section class="section glass-card">
+                    <h2 class="section-title">Contact</h2>
+                    <div class="card-content">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:abhijithxr@gmail.com">abhijithxr@gmail.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:+919767443681">+91 9767443681</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-linkedin"></i>
+                                <a href="https://www.linkedin.com/in/jithurx" target="_blank">linkedin.com/in/jithurx</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-github"></i>
+                                <a href="https://github.com/jithurx" target="_blank">github.com/jithurx</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-twitter"></i>
+                                <a href="https://x.com/jithu_25" target="_blank">x.com/jithu_25</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-globe"></i>
+                                <a href="https://jithurx.github.io/portfolio" target="_blank">jithurx.github.io/portfolio</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section glass-card">
+                    <h2 class="section-title">Education</h2>
+                    <div class="card-content">
+                        <div class="education-item">
+                            <h3>NSS College of Engineering, Palakkad</h3>
+                            <div class="education-dates">Bachelor of Technology: Computer Science Engineering</div>
+                            <div>Expected: September 2028</div>
+                        </div>
+                        <div class="education-item">
+                            <h3>Kendriya Vidyalaya NTPC Kayamkulam</h3>
+                            <div>Completed 12th Grade (2023) – 87.6%</div>
+                            <div>Completed 10th Grade (2021) – 86%</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section glass-card">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="card-content">
+                        <div class="skill-section">
+                            <div class="skill-category">
+                                <h3>Programming Languages</h3>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Python</span>
+                                        <span class="skill-level">Intermediate</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress intermediate"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">C</span>
+                                        <span class="skill-level">Beginner</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress beginner"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">HTML/CSS/JavaScript</span>
+                                        <span class="skill-level">Beginner</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress beginner"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Git</span>
+                                        <span class="skill-level">Beginner</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress beginner"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Bash</span>
+                                        <span class="skill-level">Beginner</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress beginner"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <h3>Tools & Technologies</h3>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Arduino (Microcontrollers)</span>
+                                        <span class="skill-level">Intermediate</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress intermediate"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Raspberry Pi</span>
+                                        <span class="skill-level">Beginner</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress beginner"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Modular Electronics</span>
+                                        <span class="skill-level">Intermediate</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress intermediate"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">IoT Devices</span>
+                                        <span class="skill-level">Beginner</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress beginner"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Web Development</span>
+                                        <span class="skill-level">Beginner</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress beginner"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-column">
+                <section class="section glass-card">
+                    <h2 class="section-title">Projects</h2>
+                    <div class="card-content">
+                        <div class="project-list">
+                            <div class="project-item">
+                                <h3>AniMath</h3>
+                                <p>Developing a tool to create dynamic visual animations of mathematical concepts.</p>
+                            </div>
+                            <div class="project-item">
+                                <h3>Crash Detection System</h3>
+                                <ul>
+                                    <li>Designed a microcontroller-based vehicle crash detection system.</li>
+                                    <li>Used accelerometer, GPS, and GSM modules.</li>
+                                    <li>Enables real-time accident detection and automated emergency alerts.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section glass-card">
+                    <h2 class="section-title">Hackathons</h2>
+                    <div class="card-content">
+                        <div class="hackathon-list">
+                            <div class="hackathon-item">
+                                <h3>Fossera 4.0 Hackathon</h3>
+                                <p>Participated in a 24-hour hackathon at NSS College of Engineering, Palakkad.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
