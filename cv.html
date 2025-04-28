@@ -3,465 +3,542 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhijith R - CV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Abhijith R - Curriculum Vitae</title>
+
+    <!-- Tinker Theme Font Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat:wght@700&family=Gochi+Hand&family=Instrument+Serif:ital@0;1&family=Pixelify+Sans:wght@400;700&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,600,700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png"> <!-- Ensure path is correct -->
+
     <style>
-        :root 
-        {
-            /* Monet-style color palette */
-            --primary: #7f7e80;
-            --primary-container: #5B2C7F;
-            --on-primary: #32004B;
-            --on-primary-container: #F3E1FF;
-        --secondary: #9c5151;
-    --secondary-container: #754a9e;
---on-secondary: #260044;
---on-secondary-container: #EDD7FF;
---tertiary: #BFA1FF;
---tertiary-container: #4C2A7A;
---on-tertiary: #22004A;
---on-tertiary-container: #E8D9FF;
---surface: #6e44ad;
---surface-variant: #3B2D4F;
---on-surface: #000000;
---on-surface-variant: #CBB8E6;
---outline: #000000;
---background: #121017;
+      /* --- CSS Variables for Tinker Theme B&W --- */
+      :root {
+        --color-bg: rgb(211, 211, 211); /* White background */
+        --color-text: #1a1a1a; /* Near black text */
+        --color-text-muted: #555555; /* Medium grey */
+        --color-border: #000000; /* Solid black border */
+        --color-border-light: #cccccc; /* Light grey border */
+        --color-border-dashed: #aaaaaa; /* Dashed grey border */
+        --color-card-bg: rgb(194, 194, 194); /* Very light grey card background */
+        --color-highlight-bg: #eeeeee; /* Slightly darker highlight */
+        --color-shadow: #000000; /* Black shadow */
+        --color-link: #000000;
+        --color-link-hover: #444444;
+      }
+
+      /* --- Base Styles --- */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+          scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'General Sans', sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        line-height: 1.7;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+      }
+
+      a {
+        color: var(--color-link);
+        text-decoration: underline;
+        text-decoration-color: var(--color-border-light);
+        text-underline-offset: 3px;
+        transition: color 0.2s, text-decoration-color 0.2s;
+      }
+      a:hover {
+        color: var(--color-link-hover);
+        text-decoration-color: var(--color-text);
+      }
+
+      ul { list-style: none; padding-left: 0; }
+      li { margin-bottom: 0.5rem; }
+
+      /* --- Header --- */
+      .cv-header {
+          background: var(--color-bg); /* Match body */
+          border: 2px solid var(--color-border);
+          border-radius: 10px;
+          margin-bottom: 2.5rem;
+          padding: 2rem 2.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          box-shadow: 5px 5px 0px var(--color-shadow);
+          position: relative;
+          transform: rotate(-1deg); /* Tinker tilt */
+      }
+
+      .profile-info h1 { /* Name */
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(2.5rem, 5vw, 3.2rem);
+        font-weight: 400; /* Anton is bold by default */
+        color: var(--color-text);
+        margin: 0;
+        letter-spacing: 1px;
+        line-height: 1.1;
+      }
+
+      .profile-info h2 { /* Title - Use a contrasting Tinker font */
+        font-family: 'Instrument Serif', serif;
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+        font-weight: 400;
+        color: var(--color-text-muted);
+        font-style: italic;
+        margin-top: 0.3rem;
+      }
+
+      .profile-photo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--color-border);
+        filter: grayscale(50%); /* Slight grayscale for B&W theme */
+        transition: transform 0.3s ease, filter 0.3s ease;
+        transform: rotate(2deg);
+      }
+       .profile-photo:hover {
+           transform: scale(1.05) rotate(-1deg);
+           filter: grayscale(0%);
+       }
+
+
+      /* --- Main Layout --- */
+      .main-content {
+          display: grid;
+          grid-template-columns: 1fr 2.2fr; /* Give more space to right */
+          gap: 2.5rem;
+      }
+
+       /* --- Reusable Section Card Style --- */
+      .section.tinker-card {
+          background: var(--color-card-bg);
+          border: 1px solid var(--color-border-light);
+          border-radius: 8px;
+          padding: 1.5rem;
+          margin-bottom: 2rem;
+          box-shadow: 4px 4px 0px var(--color-shadow);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .section.tinker-card:hover {
+          transform: translateY(-3px) rotate(0.5deg);
+          box-shadow: 6px 6px 0px var(--color-shadow);
+      }
+
+      .section-title {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 1.8rem; /* Increased size */
+          font-weight: 400;
+          color: var(--color-text);
+          margin-bottom: 1.5rem;
+          padding-bottom: 0.5rem;
+          border-bottom: 2px dashed var(--color-border-dashed);
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          display: inline-block;
+      }
+
+       /* --- Left Column Specifics --- */
+        .left-column .section-title {
+             font-size: 1.5rem; /* Slightly smaller titles on left */
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-            color: var(--on-surface);
+      /* Contact Info / Profiles */
+      .contact-info { display: flex; flex-direction: column; gap: 0.8rem; }
+      .contact-item { display: flex; align-items: center; gap: 0.8rem; font-size: 0.95rem; }
+      .contact-item i { font-size: 1.1rem; color: var(--color-text); width: 20px; text-align: center; flex-shrink: 0; }
+      .contact-item a { color: var(--color-text-muted); word-break: break-all; text-decoration: none;}
+      .contact-item a:hover { color: var(--color-text); text-decoration: underline;}
+
+      /* Behind the Code Quote */
+       .quote-section blockquote {
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-text);
+            border-left: 4px solid var(--color-border);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
         }
 
-        body {
-            background-color: var(--background);
-            background-image: 
-                radial-gradient(at 20% 0%, rgba(239, 108, 0, 0.15) 0px, transparent 50%),
-                radial-gradient(at 80% 50%, rgba(118, 88, 72, 0.1) 0px, transparent 50%);
-            background-attachment: fixed;
+      /* Languages & Skills Progress Bars */
+      .progress-list { display: flex; flex-direction: column; gap: 1rem; }
+      .progress-item { margin-bottom: 0.5rem; }
+      .progress-label { display: flex; justify-content: space-between; margin-bottom: 0.4rem; font-weight: 600; font-size: 0.95rem; }
+      .progress-label .level { font-family: 'Pixelify Sans', sans-serif; font-size: 0.85rem; color: var(--color-text-muted); }
+      .progress-bar { height: 8px; background-color: var(--color-border-light); border-radius: 4px; overflow: hidden; border: 1px solid var(--color-text-muted); }
+      .progress-fill { height: 100%; background-color: var(--color-text); border-radius: 4px; } /* Solid black fill */
+      .level-native { width: 100%; }
+      .level-fluent { width: 85%; background-color: #333; } /* Dark grey */
+      .level-intermediate { width: 60%; background-color: #666; } /* Medium grey */
+      .level-beginner { width: 35%; background-color: #999; } /* Light grey */
+
+
+      /* Skills Specific */
+       .skill-category { margin-top: 1.5rem; }
+       .skill-category h3 {
+           font-family: 'Pixelify Sans', sans-serif; /* Pixel font for category */
+           font-size: 1.1rem;
+           color: var(--color-text);
+           margin-bottom: 0.8rem;
+           font-weight: 700;
+           border-bottom: 1px solid var(--color-border-light);
+           padding-bottom: 0.2rem;
+       }
+       /* Optional: List skills textually instead of bars in left column */
+        .skills-text-list { padding-left: 0; margin-top: 0.5rem;}
+        .skills-text-list li {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.3rem;
+            padding-left: 15px;
+            position: relative;
+        }
+         .skills-text-list li::before {
+             content: '>'; /* Simple bullet */
+             font-family: 'Pixelify Sans', sans-serif;
+             position: absolute;
+             left: 0;
+             color: var(--color-text);
+         }
+
+
+      /* --- Right Column Specifics --- */
+       .content-block {
+            background-color: var(--color-bg); /* White block */
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--color-border-light);
+       }
+        .content-block h3 {
+           font-family: 'Bebas Neue', sans-serif;
+           color: var(--color-text);
+           margin-bottom: 0.5rem;
+           font-size: 1.4rem; /* Larger titles */
+           letter-spacing: 0.5px;
+       }
+       .content-block .sub-heading {
+           font-weight: 600;
+           color: var(--color-text);
+           margin-bottom: 0.2rem;
+           font-size: 1.1rem;
+       }
+        .content-block .dates {
+            font-family: 'Pixelify Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+        .content-block ul { list-style: disc; padding-left: 25px; margin-top: 0.5rem; }
+        .content-block ul li { margin-bottom: 0.3rem; color: var(--color-text-muted); }
+        .content-block p {
+            font-size: 1rem;
+            color: var(--color-text);
+            text-align: left;
+            margin-bottom: 0.8rem;
             line-height: 1.6;
         }
+         .content-block a { color: var(--color-text); font-weight: 500; }
+         .content-block a:hover { color: #555; }
 
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
+        /* Philosophy Quote */
+         .philosophy-quote {
+             font-family: 'Caveat', cursive;
+             font-size: 1.4rem;
+             font-weight: 700;
+             color: var(--color-text-muted);
+             border-left: 4px solid var(--color-border);
+             padding-left: 1.5rem;
+             margin: 1.5rem 0;
+             font-style: italic;
+             text-align: left;
+         }
+         .philosophy-quote .author {
+             display: block;
+             text-align: right;
+             margin-top: 0.5rem;
+             font-size: 1rem;
+             color: var(--color-text);
+             font-style: normal;
+             font-family: 'General Sans', sans-serif;
+             font-weight: 600;
+         }
 
-        /* Glassmorphism card effect */
-        .glass-card {
-            background: rgba(255, 251, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-        }
+        /* Interests as Tags */
+         .interests-tags {
+             list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px;
+         }
+          .interests-tags li {
+             background: var(--color-highlight-bg);
+             border: 1px solid var(--color-border-light);
+             color: var(--color-text);
+             padding: 5px 12px;
+             border-radius: 15px; /* Pill shape */
+             font-size: 0.9rem;
+             font-weight: 500;
+             font-family: 'Pixelify Sans', sans-serif;
+             margin-bottom: 5px; /* Add bottom margin for wrapping */
+         }
 
-        header {
-            background-color: var(--primary);
-            color: var(--on-primary);
-            padding: 2rem;
-            border-radius: 24px;
-            margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(239, 108, 0, 0.25);
-        }
+      /* --- Responsive --- */
+       @media (max-width: 900px) {
+          .main-content { grid-template-columns: 1fr; }
+          .cv-header { text-align: center; }
+          .header-content { flex-direction: column-reverse; gap: 1.5rem; }
+      }
+      @media (max-width: 500px) {
+          .container { margin: 1rem auto; padding: 0 0.8rem; }
+          .cv-header { padding: 1.5rem 1rem; }
+          .profile-info h1 { font-size: 1.8rem; }
+          .profile-info h2 { font-size: 1rem; }
+          .profile-photo { width: 100px; height: 100px; }
+          .main-content { gap: 1.5rem; }
+          .section.tinker-card { padding: 1.2rem; }
+          .section-title { font-size: 1.4rem; }
+          .content-block { padding: 1rem; }
+          .content-block h3 { font-size: 1.2rem; }
+          .contact-item { font-size: 0.9rem; }
+      }
 
-        header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .profile-info h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--on-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .profile-info h2 {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--on-primary);
-            opacity: 0.9;
-        }
-
-        .profile-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 2rem;
-        }
-
-        .section {
-            margin-bottom: 2rem;
-        }
-
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            padding: 0.5rem 1rem;
-            background-color: var(--primary-container);
-            border-radius: 12px;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .contact-item i {
-            font-size: 1.2rem;
-            color: var(--primary);
-            width: 25px;
-            text-align: center;
-        }
-
-        .contact-item a {
-            color: var(--on-surface);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-item a:hover {
-            color: var(--primary);
-        }
-
-        .education-item, .project-item, .hackathon-item {
-            background-color: var(--surface);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-            border-left: 4px solid var(--primary);
-        }
-
-        .education-item h3, .project-item h3, .hackathon-item h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .education-dates {
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-        }
-
-        .skill-section {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .skill-category h3 {
-            font-size: 1.1rem;
-            color: var(--secondary);
-            margin-bottom: 0.8rem;
-        }
-
-        .skill-item {
-            margin-bottom: 0.8rem;
-        }
-
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.3rem;
-        }
-
-        .skill-name {
-            font-weight: 500;
-        }
-
-        .skill-level {
-            font-size: 0.9rem;
-            color: var(--on-surface-variant);
-        }
-
-        .skill-bar {
-            height: 8px;
-            background-color: var(--surface-variant);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background-color: var(--primary);
-            border-radius: 4px;
-        }
-
-        .beginner { width: 25%; }
-        .intermediate { width: 50%; }
-        .advanced { width: 75%; }
-
-        .project-list, .hackathon-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .project-item ul {
-            list-style-position: inside;
-            padding-left: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .header-content {
-                flex-direction: column-reverse;
-                text-align: center;
-                gap: 1rem;
-            }
-        }
     </style>
 </head>
 <body>
+    <!-- Main Container -->
     <div class="container">
-        <header class="glass-card">
+        <!-- Header Section -->
+        <header class="cv-header">
             <div class="header-content">
                 <div class="profile-info">
                     <h1>Abhijith R</h1>
-                    <h2>Computer Science Engineering Student</h2>
+                    <!-- Using text from "About Me" as subtitle -->
+                    <h2>Motivated and curious learner exploring how things work.</h2>
                 </div>
-                <img src="images/cv_me.jpg" alt="Abhijith R" class="profile-photo">
+                <img src="images/me.jpg" alt="Abhijith R" class="profile-photo"> <!-- Changed path -->
             </div>
         </header>
 
+        <!-- Main Content Grid -->
         <div class="main-content">
+            <!-- Left Column -->
             <div class="left-column">
-                <section class="section glass-card">
-                    <h2 class="section-title">Contact</h2>
-                    <div class="card-content">
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <i class="fas fa-envelope"></i>
-                                <a href="mailto:abhijithxr@gmail.com">abhijithxr@gmail.com</a>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-phone"></i>
-                                <a href="tel:+919767443681">+91 9767443681</a>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fab fa-linkedin"></i>
-                                <a href="https://www.linkedin.com/in/jithurx" target="_blank">linkedin.com/in/jithurx</a>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fab fa-github"></i>
-                                <a href="https://github.com/jithurx" target="_blank">github.com/jithurx</a>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fab fa-twitter"></i>
-                                <a href="https://x.com/jithu_25" target="_blank">x.com/jithu_25</a>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-globe"></i>
-                                <a href="https://jithurx.github.io/portfolio" target="_blank">jithurx.github.io/portfolio</a>
-                            </div>
+                <!-- Contact / Profiles Section -->
+                <section class="section tinker-card">
+                    <h2 class="section-title">Profiles & Contact</h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+919767443681">+91 9767443681</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:abhijithr122004@gmail.com">abhijithr122004@gmail.com</a>
+                        </div>
+                         <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <a href="https://jithu.dev" target="_blank" rel="noopener noreferrer">jithu.dev</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/jithurx" target="_blank" rel="noopener noreferrer">github.com/jithurx</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://linkedin.com/in/jithurx" target="_blank" rel="noopener noreferrer">linkedin.com/in/jithurx</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <a href="https://instagram.com/abhi.j10" target="_blank" rel="noopener noreferrer">@abhi.j10</a>
+                        </div>
+                        <!-- Removed X/Twitter based on profile links -->
+                    </div>
+                </section>
+
+                 <!-- Languages Section -->
+                 <section class="section tinker-card">
+                    <h2 class="section-title">Languages</h2>
+                    <div class="progress-list">
+                        <div class="progress-item">
+                            <div class="progress-label"><span>Malayalam</span><span class="level">Native</span></div>
+                            <div class="progress-bar"><div class="progress-fill level-native"></div></div>
+                        </div>
+                         <div class="progress-item">
+                            <div class="progress-label"><span>English</span><span class="level">Fluent</span></div>
+                            <div class="progress-bar"><div class="progress-fill level-fluent"></div></div>
+                        </div>
+                         <div class="progress-item">
+                            <div class="progress-label"><span>Hindi</span><span class="level">Intermediate</span></div>
+                            <div class="progress-bar"><div class="progress-fill level-intermediate"></div></div>
                         </div>
                     </div>
                 </section>
 
-                <section class="section glass-card">
-                    <h2 class="section-title">Education</h2>
-                    <div class="card-content">
-                        <div class="education-item">
-                            <h3>NSS College of Engineering, Palakkad</h3>
-                            <div class="education-dates">Bachelor of Technology: Computer Science Engineering</div>
-                            <div>Expected: September 2028</div>
-                        </div>
-                        <div class="education-item">
-                            <h3>Kendriya Vidyalaya NTPC Kayamkulam</h3>
-                            <div>Completed 12th Grade (2023) – 87.6%</div>
-                            <div>Completed 10th Grade (2021) – 86%</div>
-                        </div>
-                    </div>
+                <!-- Skills Overview Section (using text list) -->
+                 <section class="section tinker-card">
+                    <h2 class="section-title">Skills Overview</h2>
+                     <div class="skill-category">
+                         <h3>Programming</h3>
+                         <ul class="skills-text-list">
+                             <li>C</li>
+                             <li>Python</li>
+                             <li>HTML</li>
+                             <li>CSS</li>
+                             <li>JavaScript</li>
+                         </ul>
+                     </div>
+                      <div class="skill-category">
+                         <h3>Electronics</h3>
+                         <ul class="skills-text-list">
+                             <li>Microcontrollers</li>
+                             <li>Soldering</li>
+                             <li>Circuit Design</li>
+                         </ul>
+                     </div>
+                      <div class="skill-category">
+                         <h3>Communication / Other</h3>
+                         <ul class="skills-text-list">
+                             <li>Meshtastic</li>
+                             <li>IoT Concepts</li>
+                             <li>Troubleshooting</li>
+                         </ul>
+                     </div>
+                 </section>
+
+                <!-- Behind the Code Section -->
+                <section class="section tinker-card quote-section">
+                     <h2 class="section-title">Behind the Code</h2>
+                     <blockquote>
+                         "Figuring out the digital universe one crash, compile, and late-night curiosity binge at a time."
+                     </blockquote>
                 </section>
 
-                <section class="section glass-card">
-                    <h2 class="section-title">Skills</h2>
-                    <div class="card-content">
-                        <div class="skill-section">
-                            <div class="skill-category">
-                                <h3>Programming Languages</h3>
-                                <div class="skill-item">
-                                    <div class="skill-header">
-                                        <span class="skill-name">Python</span>
-                                        <span class="skill-level">Intermediate</span>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress intermediate"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <div class="skill-header">
-                                        <span class="skill-name">C</span>
-                                        <span class="skill-level">Beginner</span>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress beginner"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <div class="skill-header">
-                                        <span class="skill-name">HTML/CSS/JavaScript</span>
-                                        <span class="skill-level">Beginner</span>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress beginner"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <div class="skill-header">
-                                        <span class="skill-name">Git</span>
-                                        <span class="skill-level">Beginner</span>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress beginner"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <div class="skill-header">
-                                        <span class="skill-name">Bash</span>
-                                        <span class="skill-level">Beginner</span>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress beginner"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-category">
-                                <h3>Tools & Technologies</h3>
-                                <div class="skill-item">
-                                    <div class="skill-header">
-                                        <span class="skill-name">Arduino (Microcontrollers)</span>
-                                        <span class="skill-level">Intermediate</span>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress intermediate"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <div class="skill-header">
-                                        <span class="skill-name">Raspberry Pi</span>
-                                        <span class="skill-level">Beginner</span>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress beginner"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <div class="skill-header">
-                                        <span class="skill-name">Modular Electronics</span>
-                                        <span class="skill-level">Intermediate</span>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress intermediate"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <div class="skill-header">
-                                        <span class="skill-name">IoT Devices</span>
-                                        <span class="skill-level">Beginner</span>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress beginner"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <div class="skill-header">
-                                        <span class="skill-name">Web Development</span>
-                                        <span class="skill-level">Beginner</span>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress beginner"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+            </div> <!-- End Left Column -->
 
+            <!-- Right Column -->
             <div class="right-column">
-                <section class="section glass-card">
-                    <h2 class="section-title">Projects</h2>
-                    <div class="card-content">
-                        <div class="project-list">
-                            <div class="project-item">
-                                <h3>AniMath</h3>
-                                <p>Developing a tool to create dynamic visual animations of mathematical concepts.</p>
-                            </div>
-                            <div class="project-item">
-                                <h3>Crash Detection System</h3>
-                                <ul>
-                                    <li>Designed a microcontroller-based vehicle crash detection system.</li>
-                                    <li>Used accelerometer, GPS, and GSM modules.</li>
-                                    <li>Enables real-time accident detection and automated emergency alerts.</li>
-                                </ul>
-                            </div>
-                        </div>
+                 <!-- About Me Section -->
+                <section class="section tinker-card">
+                    <h2 class="section-title">About Me</h2>
+                    <div class="content-block">
+                        <p>
+                            Motivated and curious learner with an interest in exploring and understanding how things work. Eager to build real skills through hands-on learning, problem-solving, and continuous experimentation. Currently laying strong foundations in programming, with a mindset focused on growth, patience, and creativity.
+                        </p>
                     </div>
                 </section>
 
-                <section class="section glass-card">
-                    <h2 class="section-title">Hackathons</h2>
-                    <div class="card-content">
-                        <div class="hackathon-list">
-                            <div class="hackathon-item">
-                                <h3>Fossera 4.0 Hackathon</h3>
-                                <p>Participated in a 24-hour hackathon at NSS College of Engineering, Palakkad.</p>
-                            </div>
-                        </div>
+                <!-- Education Section -->
+                <section class="section tinker-card">
+                    <h2 class="section-title">Education</h2>
+                    <div class="content-block">
+                        <h3>NSS College of Engineering, Palakkad</h3>
+                        <div class="sub-heading">Bachelor of Technology, Computer Science Engineering</div>
+                        <div class="dates">August 2024 - Present</div>
+                        <p><i class="fas fa-link"></i> <a href="https://www.nssce.ac.in/" target="_blank" rel="noopener noreferrer">www.nssce.ac.in</a></p>
+                    </div>
+                     <div class="content-block">
+                        <h3>Kendriya Vidyalaya NTPC Kayamkulam</h3>
+                        <div class="sub-heading">Higher Secondary (Science with CS)</div>
+                        <div class="dates">Graduated 2023 (87.6%)</div>
+                        <p><i class="fas fa-link"></i> <a href="https://kayamkulamntpc.kvs.ac.in/" target="_blank" rel="noopener noreferrer">kayamkulamntpc.kvs.ac.in</a></p>
+                    </div>
+                    <div class="content-block">
+                        <h3>Kendriya Vidyalaya NTPC Kayamkulam</h3>
+                        <div class="sub-heading">Secondary Education</div>
+                        <div class="dates">Graduated 2021 (86%)</div>
+                         <p><i class="fas fa-link"></i> <a href="https://kayamkulamntpc.kvs.ac.in/" target="_blank" rel="noopener noreferrer">kayamkulamntpc.kvs.ac.in</a></p>
                     </div>
                 </section>
-            </div>
-        </div>
-    </div>
+
+                <!-- Interests Section (Right Column) -->
+                <section class="section tinker-card">
+                    <h2 class="section-title">Interests</h2>
+                    <div class="content-block">
+                         <ul class="interests-tags">
+                             <li>Programming & Software</li>
+                             <li>Clean Code</li>
+                             <li>Open Source</li>
+                             <li>Web Development</li>
+                             <li>Embedded Systems</li>
+                             <li>DIY Electronics</li>
+                             <li>Circuits & Sensors</li>
+                             <li>Microcontrollers</li>
+                             <li>UI/UX Design</li>
+                             <li>Aesthetic UI</li>
+                             <li>Space Technology</li>
+                             <li>Astrophotography</li>
+                             <li>Reverse Engineering</li>
+                             <li>Vintage Hardware</li>
+                             <li>Scientific Curiosity</li>
+                             <li>Physics & Maths</li>
+                             <li>Quantum Physics</li>
+                         </ul>
+                    </div>
+                </section>
+
+                 <!-- Projects Section -->
+                <section class="section tinker-card">
+                    <h2 class="section-title">Projects</h2>
+                     <div class="content-block">
+                        <h3>AniMath</h3>
+                        <div class="dates">March 2025 - Present</div>
+                        <p>Interactive Mathematical Animation tool for generating visual animations of mathematical concepts, enabling dynamic representations across various mathematical topics.</p>
+                        <p><i class="fas fa-link"></i> <a href="https://jithurx.github.io/AniMath/" target="_blank" rel="noopener noreferrer">View Project</a></p>
+                    </div>
+                    <div class="content-block">
+                        <h3>Vehicle Crash Detection System</h3>
+                         <div class="dates">October 2019</div>
+                        <p>A microcontroller-based vehicle crash detection system using accelerometer, GPS, and GSM modules for real-time accident detection and automated emergency alerts.</p>
+                        <p><i class="fab fa-github"></i> <a href="https://github.com/jithurx/vehicle-crash-detection-system" target="_blank" rel="noopener noreferrer">View on GitHub</a></p>
+                    </div>
+                </section>
+
+                 <!-- Hackathons Section (Moved from left) -->
+                <section class="section tinker-card">
+                    <h2 class="section-title">Hackathons</h2>
+                    <div class="content-block">
+                        <h3>Fossera 4.0 Hackathon</h3>
+                         <div class="dates">NSS College of Engineering, Palakkad</div>
+                        <p>Participated in a 24-hour hackathon focused on developing innovative solutions using technology.</p>
+                    </div>
+                </section>
+
+                 <!-- Work Philosophy Section -->
+                <section class="section tinker-card">
+                    <h2 class="section-title">Work Philosophy</h2>
+                    <div class="philosophy-quote">
+                       Driven by curiosity and the belief that discovery is a continuous journey:
+                       <br>'Somewhere, something incredible is waiting to be known.'
+                       <span class="author">– Carl Sagan</span>
+                    </div>
+                </section>
+
+            </div> <!-- End Right Column -->
+        </div> <!-- End Main Content -->
+    </div> <!-- End Container -->
+
+    <!-- No Star Animation Script Needed -->
+    <!-- Font Awesome script (loaded via CDN in <head>) -->
+
 </body>
 </html>
